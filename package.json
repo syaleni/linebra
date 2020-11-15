@@ -1,7 +1,8 @@
 {
-  "name": "linebra",
+  "name": "@syaleni/linebra",
   "version": "1.0.0",
   "description": "A small library for linear algebra operations.",
+  "homepage": "https://github.com/syaleni/linebra",
   "main": "./build/linebra.js",
   "author": {
     "email": "syaleni@gmail.com",
@@ -10,10 +11,11 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "webpack --mode=production"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "jest": "^26.6.3",

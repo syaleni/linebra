@@ -6,7 +6,7 @@ A small library for linear algebra oprations.
 
 ```ts
 // ESM:
-import { linebra } from 'linebra';
+import linebra from 'linebra';
 // CJS:
 const linebra = require('linebra');
 ```

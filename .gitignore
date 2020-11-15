@@ -1,9 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,linux,macos,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,linux,macos,windows,visualstudiocode
 
-# Webpack Build
-build
-
 ### Linux ###
 *~
 
