@@ -1,0 +1,23 @@
+{
+  "name": "linebra",
+  "version": "1.0.0",
+  "description": "A small library for linear algebra operations.",
+  "main": "./build/linebra.js",
+  "author": {
+    "email": "syaleni@gmail.com",
+    "name": "Siavash Habibi"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "test": "jest"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "jest": "^26.6.3",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
