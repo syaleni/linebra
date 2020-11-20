@@ -1,9 +1,10 @@
 {
   "name": "@syaleni/linebra",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A small library for linear algebra operations.",
   "homepage": "https://github.com/syaleni/linebra",
   "main": "./build/linebra.js",
+  "module": "./src/index.js",
   "author": {
     "email": "syaleni@gmail.com",
     "name": "Siavash Habibi"

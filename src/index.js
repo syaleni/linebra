@@ -6,7 +6,9 @@ import transCoordsByMovingO from './functions/transCoordsByMovingO';
 import transCoordsByAxesRot from './functions/transCoordsByAxesRot';
 import lineSlopeInterceptForm from './functions/lineSlopeInterceptForm';
 import linesIntersection from './functions/linesIntersection';
+import vertexDistToLine from './functions/vertexDistToLine';
 import vertexOnLine from './functions/vertexOnLine';
+import verticesDist from './functions/verticesDist';
 
 export {
   convDegToRad,
@@ -17,5 +19,7 @@ export {
   transCoordsByAxesRot,
   lineSlopeInterceptForm,
   linesIntersection,
+  vertexDistToLine,
   vertexOnLine,
+  verticesDist,
 };
