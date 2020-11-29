@@ -1,6 +1,6 @@
 {
   "name": "@syaleni/linebra",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A small library for linear algebra operations.",
   "homepage": "https://github.com/syaleni/linebra",
   "main": "./build/linebra.js",

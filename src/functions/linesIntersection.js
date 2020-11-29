@@ -7,9 +7,8 @@
  * @return {Object} {x, y}
  */
 function linesIntersection(line1, line2) {
-  // TODO: For consistent use of lines, maybe a class should be defined?
   if (line1.m === line2.m) {
-    //lines are parallel
+    //lines are parallel or the same
     return { x: undefined, y: undefined };
   }
   if (!isFinite(line1.m)) {

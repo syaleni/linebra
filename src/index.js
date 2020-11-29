@@ -4,6 +4,7 @@ import areaByVertices from './functions/areaByVertices';
 import centroidByVertices from './functions/centroidByVertices';
 import transCoordsByMovingO from './functions/transCoordsByMovingO';
 import transCoordsByAxesRot from './functions/transCoordsByAxesRot';
+import transCoordsByRotAb from './functions/transCoordsByRotAb';
 import lineSlopeInterceptForm from './functions/lineSlopeInterceptForm';
 import linesIntersection from './functions/linesIntersection';
 import vertexDistToLine from './functions/vertexDistToLine';
@@ -17,6 +18,7 @@ export {
   centroidByVertices,
   transCoordsByMovingO,
   transCoordsByAxesRot,
+  transCoordsByRotAb,
   lineSlopeInterceptForm,
   linesIntersection,
   vertexDistToLine,
