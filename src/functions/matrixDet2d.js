@@ -1,7 +1,10 @@
 /**
  * Calculate determinant of a 2d matrix
  *
+ * @since 1.0.4
+ * @category Matrix
  * @param {Array} matrix Array of arrays [[1, 2], [2, 3]]
+ * @return {Number} Det of matrix
  */
 function matrixDet2d(matrix) {
   if (matrix.length !== 2) throw new Error('Matrix size is wrong.');

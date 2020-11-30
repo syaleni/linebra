@@ -45,3 +45,57 @@ const p = [
   { x: 0, y: 3 },
 ];
 ```
+
+## Functions
+
+### Utilites
+
+#### convDegToRad
+
+Converts degrees to radians.
+
+```ts
+convDegToRad(180); // --> 3.1415
+```
+
+#### convRadToDeg
+
+Converts radians to degrees.
+
+```ts
+convRadToDeg(1); // --> 57.29
+```
+
+#### areaByVertices
+
+Calculates the area bound by a set of vertices using Shoelace formula.
+
+Notes:
+
+- Order of vertices matters
+- Does not consider clockwise or anti-clockwise rotation (returns absolute value)
+
+```ts
+areaByVertices([
+  { x: 0, y: 0 },
+  { x: 5, y: 0 },
+  { x: 5, y: 5 },
+]); // --> 12.5
+```
+
+#### centroidByVertices
+
+Calculates the centeroid of the area bound by a set of vertices.
+
+Notes:
+
+- Order of vertices does not matter
+- Does not consider clockwise or anti-clockwise rotation (returns absolute value)
+
+```ts
+centroidByVertices([
+  { x: 0, y: 0 },
+  { x: 0, y: 5 },
+  { x: 5, y: 0 },
+]); // --> {x: 1.67, y: 1.67}
+```
