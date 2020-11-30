@@ -19,16 +19,16 @@ const linebra = require('linebra');
 const v = { x: 1, y: 1 };
 ```
 
-### Line
+### Segment
 
 ```ts
-const l = [
+const s = [
   { x: 1, y: 1 },
   { x: 3, y: 3 },
 ];
 ```
 
-or
+### Line
 
 ```ts
 const l = { m: 1, c: 3 }; // i.e. y = m * x + c

@@ -7,6 +7,7 @@
  * @param {Object} line in slope-intercept format { m: 1, c: 1 } see lineSlopeInterceptForm
  * @param {Number} precision number of digits of rounding
  * @return {Boolean}
+ *
  */
 function vertexOnLine(vertex, line, precision) {
   let err;

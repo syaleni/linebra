@@ -1,5 +1,5 @@
 /**
- * Calculate coeffs of a line from vertices : y = m * x + c
+ * Calculate coeffs of an infinite line representing a segment : y = m * x + c
  *
  * @since 1.0.0
  * @param {Array} vertices [{ x: 1, y: 0 }, { x: 5, y: 0 }]
