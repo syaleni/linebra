@@ -48,11 +48,19 @@ function polygonPointInclusion(polygon, vertex, precision) {
   return false;
 }
 
-// Degenerate Case 1
+/**
+ * Degenerate Case 1
+ * An edge is horizontal and have the same y as the vertex. As such,
+ * rays shot at step 3 and 4 of polygonPointInclusion will fall on o
+ * ne of the edges which results in infinte intersections. As such,
+ * such edge will be ommited from the edges array.
+ *
+ * @param {Array} edges [ [{x, y}, {x, y}], [{x, y}, {x, y}], ... ]
+ * @param {Object} vertex [{x, y}]
+ * @param {Number} precision
+ * @return {Array} Array of edges not causing degenerate case 1
+ */
 function degenerateCase1(edges, vertex, precision) {
-  // Degenerate Case 1: An edge is horizontal and have the same y as the vertex
-  // rays shot at step 3 and 4 will fall on one of the edges which results in infinte
-  // intersections. As such, it'll be ommited from the edges array
   return edges.filter((e) => {
     const edgeSIF = lineSlopeInterceptForm(e);
     if (numRound(edgeSIF.m, precision) === 0) {
@@ -67,7 +75,15 @@ function degenerateCase1(edges, vertex, precision) {
   });
 }
 
-// Degenerate Case 2
+/**
+ * Degenerate Case 2
+ * Ray intersects an edge at one end of the edge
+ *
+ * @param {Array} edges [ [{x, y}, {x, y}], [{x, y}, {x, y}], ... ]
+ * @param {Array} ray [{x, y}, {x, y}]
+ * @param {Number} precision
+ * @return {Array} [{x, y}, {x, y}, ...]
+ */
 function edgesRayIntersections(edges, ray, precision) {
   return edges
     .map((edge) => {
@@ -84,13 +100,26 @@ function edgesRayIntersections(edges, ray, precision) {
     .filter((v) => validateVertex(v));
 }
 
+/**
+ * Check if v is one of vertices of the given edge
+ *
+ * @param {Array} edge [{x, y}, {x, y}]
+ * @param {Object} v {x, y}
+ * @param {Number} precision
+ * @return {Boolean}
+ */
 function segmentEndsAtVertex(edge, v, precision) {
-  // check if v is one of vertices of the given edge
   const c1 = vertexOnVertex(edge[0], v, precision);
   const c2 = vertexOnVertex(edge[1], v, precision);
   return c1 || c2;
 }
 
+/**
+ * Transform polygon from [v1, v2, ...] to [e1, e2, e3]
+ *
+ * @param {Array} polygon [{x, y}, {x, y}, ...]
+ * @return {Array} [[{x, y}, {x, y}], [{x, y}, {x, y}], ...]
+ */
 function polygonEdges(polygon) {
   return polygon.reduce((acc, v, i, arr) => {
     if (i === arr.length - 1) {
@@ -102,5 +131,5 @@ function polygonEdges(polygon) {
   }, []);
 }
 
-export { validatePolygon, polygonEdges };
+export { polygonEdges };
 export default polygonPointInclusion;
