@@ -2,6 +2,12 @@
 
 A small library for linear algebra oprations.
 
+## Installation
+
+```
+npm install @syaleni/linebra
+```
+
 ## Usage
 
 ```ts
@@ -10,6 +16,14 @@ import * as linebra from 'linebra';
 // CJS:
 const linebra = require('linebra');
 ```
+
+## Testing
+
+```
+npm run test
+```
+
+or run jest directly.
 
 ## Defintions
 
@@ -90,7 +104,7 @@ Calculates the centeroid of the area bound by a set of vertices.
 Notes:
 
 - Order of vertices does not matter
-- Does not consider clockwise or anti-clockwise rotation (returns absolute value)
+- Does not consider clockwise or anti-clockwise rotation
 
 ```ts
 centroidByVertices([
