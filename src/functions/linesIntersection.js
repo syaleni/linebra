@@ -2,11 +2,12 @@
  * Calculate intersection of two lines
  *
  * @since 1.0.0
+ * @module Line
  * @param {Object} line1 in slope-intercept format { m: 1, c: 1 } see lineSlopeInterceptForm
  * @param {Object} line2 in slope-intercept format { m: 1, c: 1 } see lineSlopeInterceptForm
  * @return {Object} {x, y}
  */
-function linesIntersection(line1, line2) {
+export default function linesIntersection(line1, line2) {
   if (line1.m === line2.m) {
     //lines are parallel or the same
     return { x: undefined, y: undefined };
@@ -23,5 +24,3 @@ function linesIntersection(line1, line2) {
   const y = line1.m * x + line1.c;
   return { x, y };
 }
-
-export default linesIntersection;

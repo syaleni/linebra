@@ -1,21 +1,18 @@
 /**
- * Calculate the Area of an Array of Vertics using Shoelace formula
+ * Calculate the Area of an Array of Vertics using Shoelace formula.
+ * Vertices should be in a clockwise or counter-clockwise order.
+ * Connected vertices should be adjacent in the array passed,
+ * otherwise the result will be wrong.
  *
  * @since 1.0.0
- * @category Vertex
+ * @module Vertex
  * @param {Array} vertices Array of vertices.
  * @returns {Number} Returns the area bound by vertices.
  * @example
- *
+ * // returns 50
  * areaByVertices([{x: 0, y: 0}, {x: 10, y: 0}, {x: 0, y: 10}])
- * // => 50
- *
- * @todo
- * Vertices should be in a clockwise or counter-clockwise order.
- * Connected vertices should be adjacent in the vertices array,
- * otherwise the result is wrong.
  */
-function areaByVertices(vertices) {
+export default function areaByVertices(vertices) {
   let area = 0;
 
   const numOfVerts = vertices.length;
@@ -28,5 +25,3 @@ function areaByVertices(vertices) {
     vertices[numOfVerts - 1].y * vertices[0].x;
   return Math.abs(area / 2);
 }
-
-export default areaByVertices;

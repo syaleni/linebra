@@ -1,4 +1,4 @@
-import numRound from '../src/functions/numRound';
+import numRound from '@/functions/numRound';
 
 test('Round 10.123 to 2 decimals', () => {
   expect(numRound(10.123, 2)).toBe(10.12);

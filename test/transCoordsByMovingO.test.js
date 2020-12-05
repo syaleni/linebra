@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { transCoordsByMovingO } from '../src/';
+import transCoordsByMovingO from '@/functions/transCoordsByMovingO';
 
 test('Calculate transformed coordinates of a vertex', () => {
   expect(transCoordsByMovingO({ x: 0, y: 0 }, { x: 1, y: 2 })).toStrictEqual({

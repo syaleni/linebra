@@ -1,18 +1,18 @@
-import lineSlopeInterceptForm from './lineSlopeInterceptForm';
-import segmentLength from './segmentLength';
-import vertexOnLine from './vertexOnLine';
+import lineSlopeInterceptForm from '@/functions/lineSlopeInterceptForm';
+import segmentLength from '@/functions/segmentLength';
+import vertexOnLine from '@/functions/vertexOnLine';
 /**
  * Find out if a vertex is on a line or not
  *
  * @since 1.0.0
- * @category Vertex
+ * @module Vertex
  * @param {Object} vertex { x: 1, y: 2 }
  * @param {Object} segment [{x, y}, {x, y}]
  * @param {Number} precision number of digits of rounding
  * @return {Boolean}
  *
  */
-function vertexOnSegment(vertex, segment, precision) {
+export default function vertexOnSegment(vertex, segment, precision) {
   const line = lineSlopeInterceptForm(segment);
   // If vertex is not on the line representing the segment, then it's not on the segment
   if (!vertexOnLine(vertex, line, precision)) return false;
@@ -23,5 +23,3 @@ function vertexOnSegment(vertex, segment, precision) {
   const err = Math.abs(L - (L1 + L2));
   return Math.round(err * 10 ** precision) / 10 ** precision === 0;
 }
-
-export default vertexOnSegment;

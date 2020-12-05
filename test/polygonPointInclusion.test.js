@@ -2,8 +2,8 @@ import PRECISION from './PRECISION';
 import {
   validatePolygon,
   polygonEdges,
-} from '../src/functions/polygonPointInclusion';
-import polygonPointInclusion from '../src/functions/polygonPointInclusion';
+} from '@/functions//polygonPointInclusion';
+import polygonPointInclusion from '@/functions/polygonPointInclusion';
 
 test('Check a polygon condition', () => {
   let err = null;

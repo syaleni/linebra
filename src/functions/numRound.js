@@ -2,12 +2,12 @@
  * Round a number by the number of decimals given
  *
  * @since 1.0.6
- * @category Number
+ * @module Utils
  * @param {Number} num
  * @param {Number} precision Number of decimals used for rounding
  * @return {Number}
  */
-function numRound(num, precision) {
+export default function numRound(num, precision) {
   if (isNaN(precision))
     throw new Error('Number of decimals for rounding is undefined');
   if (isNaN(num)) return num;
@@ -18,5 +18,3 @@ function numRound(num, precision) {
 
   return roundedNum;
 }
-
-export default numRound;

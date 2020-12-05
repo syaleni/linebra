@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { segmentLength } from '../src/';
+import segmentLength from '@/functions/segmentLength';
 
 test('Calculate the length of a segment', () => {
   expect(

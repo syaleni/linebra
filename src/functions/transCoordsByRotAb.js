@@ -1,20 +1,20 @@
-import transCoordsByAxesRot from './transCoordsByAxesRot';
-import transCoordsByMovingO from './transCoordsByMovingO';
+import transCoordsByAxesRot from '@/functions/transCoordsByAxesRot';
+import transCoordsByMovingO from '@/functions/transCoordsByMovingO';
 /**
  * Transform the Coordinates of a Vertex by Rotation About a Vertex
  *
  * @since 1.0.4
- * @category Vertex
+ * @module Vertex
  * @param {Object} vertex { x: 1, y: 0 }
  * @param {Number} angle in degrees, clockwise positive
  * @param {Object} refVertex { x: 3, y: 3 }
  * @returns {Number} Returns the new coords of vertex.
  *
  * @example
+ * // returns {x: 1, y: 5}
  * transCoordsByMovingO({x: 5, y: 1}, 90, {x: 1, y: 1})
- * // => {x: 1, y: 5}
  */
-function transCoordsByRotAb(vertex, angle, refVertex) {
+export default function transCoordsByRotAb(vertex, angle, refVertex) {
   // 1. Move O to refVetex
   let transVertex = transCoordsByMovingO(vertex, refVertex);
   // 2. Rotate axis
@@ -26,5 +26,3 @@ function transCoordsByRotAb(vertex, angle, refVertex) {
   });
   return transVertex;
 }
-
-export default transCoordsByRotAb;

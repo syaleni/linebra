@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { convRadToDeg } from '../src/';
+import convRadToDeg from '@/functions/convRadToDeg';
 
 test('Convert 3.14 radians to degrees', () => {
   expect(convRadToDeg(Math.PI)).toBe(180);

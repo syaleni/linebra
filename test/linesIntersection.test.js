@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { linesIntersection } from '../src/';
+import linesIntersection from '@/functions/linesIntersection';
 
 test('Calculate intersection of two lines', () => {
   const line1 = { m: 0, c: 5 };

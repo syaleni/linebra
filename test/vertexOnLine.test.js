@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { vertexOnLine } from '../src/';
+import vertexOnLine from '@/functions/vertexOnLine';
 
 test('Find out if a given vertex is on a given line', () => {
   const line = { m: 0, c: 5 };

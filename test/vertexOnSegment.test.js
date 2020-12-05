@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { vertexOnSegment } from '../src/';
+import vertexOnSegment from '@/functions/vertexOnSegment';
 
 test('Find out if a given vertex is on a given segment', () => {
   const segment = [

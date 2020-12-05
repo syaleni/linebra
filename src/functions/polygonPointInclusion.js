@@ -1,20 +1,20 @@
-import segmentsIntersection from './segmentsIntersection';
-import validateVertex from './validateVertex';
-import vertexOnVertex from './vertexOnVertex';
-import lineSlopeInterceptForm from './lineSlopeInterceptForm';
-import numRound from './numRound';
-import validatePolygon from './validatePolygon';
+import segmentsIntersection from '@/functions/segmentsIntersection';
+import validateVertex from '@/functions/validateVertex';
+import vertexOnVertex from '@/functions/vertexOnVertex';
+import lineSlopeInterceptForm from '@/functions/lineSlopeInterceptForm';
+import numRound from '@/functions/numRound';
+import validatePolygon from '@/functions/validatePolygon';
 /**
  * Find out if a point is located inside a polygon or not
  *
  * @since 1.0.6
- * @category Polygon
+ * @module Polygon
  * @param {Array} polygon Array of vertices [{x, y}, {x, y}, {x, y}, ...]
  * @param {Object} vertex {x, y}
  * @param {Number} precision Number of decimal points to be considered in comparisons
  * @return true or false
  */
-function polygonPointInclusion(polygon, vertex, precision) {
+export default function polygonPointInclusion(polygon, vertex, precision) {
   // 1. Validate polygon
   validatePolygon(polygon);
 
@@ -115,10 +115,13 @@ function segmentEndsAtVertex(edge, v, precision) {
 }
 
 /**
- * Transform polygon from [v1, v2, ...] to [e1, e2, e3]
+ * Transform polygon vertice to edges
  *
  * @param {Array} polygon [{x, y}, {x, y}, ...]
  * @return {Array} [[{x, y}, {x, y}], [{x, y}, {x, y}], ...]
+ * @example
+ * // return [ [{1, 1}, {2, 2}], [{2, 2}, {0, 2}], [{0, 2}, {1, 1}] ]
+ * polygonEdges([{1, 1}, {2, 2}, {0,2}])
  */
 function polygonEdges(polygon) {
   return polygon.reduce((acc, v, i, arr) => {
@@ -132,4 +135,3 @@ function polygonEdges(polygon) {
 }
 
 export { polygonEdges };
-export default polygonPointInclusion;

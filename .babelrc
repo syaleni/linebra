@@ -1,7 +1,12 @@
 {
-    "env": {
-      "test": {
-        "plugins": ["@babel/plugin-transform-modules-commonjs"]
-      }
+  "env": {
+    "test": {
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    },
+    "development": {
+      "presets": ["es2015"],
+      "sourceMaps": true,
+      "retainLines": true
     }
   }
+}

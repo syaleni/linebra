@@ -1,13 +1,12 @@
 /**
- * Validate format of a vertex
+ * Validate a vertex by:
+ * 1. It should include an x and y property with numeric value
  *
  * @since 1.0.6
- * @category Validator
+ * @module Validator
  * @param {Object} vertex
  * @return {Boolean}
  */
-function validateVertex(vertex) {
+export default function validateVertex(vertex) {
   return !(isNaN(vertex.x) || isNaN(vertex.y));
 }
-
-export default validateVertex;

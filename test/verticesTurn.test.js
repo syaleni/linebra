@@ -1,4 +1,4 @@
-import { verticesTurn } from '../src/';
+import verticesTurn from '@/functions/verticesTurn';
 
 test('Calculate turn direction of three vertices', () => {
   const vertices = [

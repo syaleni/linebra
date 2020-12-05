@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { areaByVertices } from '../src/';
+import areaByVertices from '@/functions/areaByVertices';
 
 test('Calculate area bound by 3 vertices', () => {
   expect(

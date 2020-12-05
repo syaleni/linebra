@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { transCoordsByAxesRot } from '../src/';
+import transCoordsByAxesRot from '@/functions/transCoordsByAxesRot';
 
 test('Transofrm coords. of a vertix by rotating axes by 90 Deg.', () => {
   const { x, y } = transCoordsByAxesRot({ x: 5, y: 1 }, 90);

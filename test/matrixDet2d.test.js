@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { matrixDet2d } from '../src/';
+import matrixDet2d from '@/functions/matrixDet2d';
 
 test('Calculate determinant of a 2d matrix', () => {
   const matrix = [

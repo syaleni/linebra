@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { segmentsIntersection } from '../src/';
+import segmentsIntersection from '@/functions/segmentsIntersection';
 
 test('Calculate the intersection of two segments', () => {
   const s1 = [

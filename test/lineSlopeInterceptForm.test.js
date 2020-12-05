@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { lineSlopeInterceptForm } from '../src/';
+import lineSlopeInterceptForm from '@/functions/lineSlopeInterceptForm';
 
 test('Calculate line-intercept form of a line passing two vertices', () => {
   const vertices = [

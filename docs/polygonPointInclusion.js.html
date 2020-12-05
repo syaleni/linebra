@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: polygonPointInclusion.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: polygonPointInclusion.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import segmentsIntersection from '@/functions/segmentsIntersection';
+import validateVertex from '@/functions/validateVertex';
+import vertexOnVertex from '@/functions/vertexOnVertex';
+import lineSlopeInterceptForm from '@/functions/lineSlopeInterceptForm';
+import numRound from '@/functions/numRound';
+import validatePolygon from '@/functions/validatePolygon';
+/**
+ * Find out if a point is located inside a polygon or not
+ *
+ * @since 1.0.6
+ * @module Polygon
+ * @param {Array} polygon Array of vertices [{x, y}, {x, y}, {x, y}, ...]
+ * @param {Object} vertex {x, y}
+ * @param {Number} precision Number of decimal points to be considered in comparisons
+ * @return true or false
+ */
+export default function polygonPointInclusion(polygon, vertex, precision) {
+  // 1. Validate polygon
+  validatePolygon(polygon);
+
+  // 2. Get polygon edges (Degenerate Case 1 is taken care of here)
+  const edges = degenerateCase1(polygonEdges(polygon), vertex, precision);
+
+  // 3. Shoot a ray from the vertex to the left
+  // 3.1. Find min. x of polygon vertices
+  const minX = polygon.reduce((acc, v, i) => {
+    if (i === 0 || v.x &lt;= acc) acc = v.x;
+    return acc;
+  }, null);
+  // 3.2. Create the ray
+  const rayL = [vertex, { x: minX, y: vertex.y }];
+  // 3.3. Find intersections of the ray with all edges
+  const intsL = edgesRayIntersections(edges, rayL, precision); // Degenerate Case 2 is taken care of here
+
+  // 4. Shoot a ray from the vertex to the right
+  // 4.1. Find max. x of polygon vertices
+  const maxX = polygon.reduce((acc, v, i) => {
+    if (i === 0 || v.x >= acc) acc = v.x;
+    return acc;
+  }, null);
+  // 4.2. Create the ray
+  const rayR = [vertex, { x: maxX, y: vertex.y }];
+  // 4.3. Find intersections of the ray with all edges
+  const intsR = edgesRayIntersections(edges, rayR, precision); // Degenerate Case 2 is taken care of here
+
+  // 5. If both numbers are odd, the point is inside the polygon
+  if ((intsL.length % 2 !== 0) &amp; (intsR.length % 2 !== 0)) return true;
+  return false;
+}
+
+/**
+ * Degenerate Case 1
+ * An edge is horizontal and have the same y as the vertex. As such,
+ * rays shot at step 3 and 4 of polygonPointInclusion will fall on o
+ * ne of the edges which results in infinte intersections. As such,
+ * such edge will be ommited from the edges array.
+ *
+ * @param {Array} edges [ [{x, y}, {x, y}], [{x, y}, {x, y}], ... ]
+ * @param {Object} vertex [{x, y}]
+ * @param {Number} precision
+ * @return {Array} Array of edges not causing degenerate case 1
+ */
+function degenerateCase1(edges, vertex, precision) {
+  return edges.filter((e) => {
+    const edgeSIF = lineSlopeInterceptForm(e);
+    if (numRound(edgeSIF.m, precision) === 0) {
+      // Edge is horizontal, calc delta y of vertex (rays) and edge
+      const dy = Math.abs(edgeSIF.c - vertex.y);
+      if (numRound(dy, precision) === 0) {
+        // Edge will fall on top of ray
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+/**
+ * Degenerate Case 2
+ * Ray intersects an edge at one end of the edge
+ *
+ * @param {Array} edges [ [{x, y}, {x, y}], [{x, y}, {x, y}], ... ]
+ * @param {Array} ray [{x, y}, {x, y}]
+ * @param {Number} precision
+ * @return {Array} [{x, y}, {x, y}, ...]
+ */
+function edgesRayIntersections(edges, ray, precision) {
+  return edges
+    .map((edge) => {
+      const v = segmentsIntersection(edge, ray);
+
+      // Degenerate Case 2: v is one of polygon's vertices
+      if (segmentEndsAtVertex(edge, v, precision)) {
+        // Intersection is a polygon vertex
+        return { x: undefined, y: undefined };
+      }
+
+      return v;
+    })
+    .filter((v) => validateVertex(v));
+}
+
+/**
+ * Check if v is one of vertices of the given edge
+ *
+ * @param {Array} edge [{x, y}, {x, y}]
+ * @param {Object} v {x, y}
+ * @param {Number} precision
+ * @return {Boolean}
+ */
+function segmentEndsAtVertex(edge, v, precision) {
+  const c1 = vertexOnVertex(edge[0], v, precision);
+  const c2 = vertexOnVertex(edge[1], v, precision);
+  return c1 || c2;
+}
+
+/**
+ * Transform polygon vertice to edges
+ *
+ * @param {Array} polygon [{x, y}, {x, y}, ...]
+ * @return {Array} [[{x, y}, {x, y}], [{x, y}, {x, y}], ...]
+ * @example
+ * // return [ [{1, 1}, {2, 2}], [{2, 2}, {0, 2}], [{0, 2}, {1, 1}] ]
+ * polygonEdges([{1, 1}, {2, 2}, {0,2}])
+ */
+function polygonEdges(polygon) {
+  return polygon.reduce((acc, v, i, arr) => {
+    if (i === arr.length - 1) {
+      acc.push([v, arr[0]]);
+    } else {
+      acc.push([v, arr[i + 1]]);
+    }
+    return acc;
+  }, []);
+}
+
+export { polygonEdges };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Line.html">Line</a></li><li><a href="module-Matrix.html">Matrix</a></li><li><a href="module-Polygon.html">Polygon</a></li><li><a href="module-Segment.html">Segment</a></li><li><a href="module-Utils.html">Utils</a></li><li><a href="module-Validator.html">Validator</a></li><li><a href="module-Vertex.html">Vertex</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sat Dec 05 2020 17:18:09 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import PRECISION from './PRECISION';
-import { centroidByVertices } from '../src/';
+import centroidByVertices from '@/functions/centroidByVertices';
 
 test('Calculate centroid of 3 vertices', () => {
   expect(

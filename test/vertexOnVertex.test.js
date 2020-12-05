@@ -1,4 +1,4 @@
-import { vertexOnVertex } from '../src/';
+import vertexOnVertex from '@/functions/vertexOnVertex';
 
 test('Check if two vertices are considered the same', () => {
   const v1 = { x: 0, y: 0 };
