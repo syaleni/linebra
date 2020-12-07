@@ -4,8 +4,8 @@
  * @since 1.0.6
  * @module Matrix
  * @param {Array} matrix [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
- * @param {Number} rowNo
- * @param {Number | Array} add
+ * @param {Number} rowNo Target row
+ * @param {Number | Array} add Number or array to be added to the target row
  * @return {Array} [[2, 3, 4], [2, 3, 4], [3, 4, 5]]
  * @example
  * // returns [[2, 3, 4], [2, 3, 4], [3, 4, 5]]

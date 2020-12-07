@@ -7,10 +7,14 @@
  * @since 1.0.0
  * @module Vertex
  * @param {Array} vertices Array of vertices.
- * @returns {Number} Returns the area bound by vertices.
+ * @returns {Number} Returns absolute value of area bound by vertices.
  * @example
+ * areaByVertices([
+ *  {x: 0, y: 0},
+ *  {x: 10, y: 0},
+ *  {x: 0, y: 10}
+ * ]);
  * // returns 50
- * areaByVertices([{x: 0, y: 0}, {x: 10, y: 0}, {x: 0, y: 10}])
  */
 export default function areaByVertices(vertices) {
   let area = 0;
