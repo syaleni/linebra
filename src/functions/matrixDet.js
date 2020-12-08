@@ -14,6 +14,7 @@ import matrixIsSquare from '@/functions/matrixIsSquare';
 export default function matrixDet(matrix) {
   if (!matrixIsSquare(matrix))
     throw new Error('InvalidArgumentException - matrix is not square.');
+  if (matrix.length === 1) return matrix[0][0];
   if (matrix.length === 2) return matrixDet2d(matrix);
   // TODO: Any row of col of matrix can be transversed. The best one would be the one with greatest number of zeros
   // TODO: If a row or column are all zeros, det is zero

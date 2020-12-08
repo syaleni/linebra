@@ -67,11 +67,11 @@ const p = [
 A matrix:
 
 ```ts
-const mat1 = [
+const mat1d = [1, 2, 3];
+
+const mat2d = [
   [1, 2],
   [2, 1],
   [3, 3],
 ];
-
-const mat2 = [1, 2, 3];
 ```

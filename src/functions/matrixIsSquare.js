@@ -14,6 +14,13 @@
  */
 export default function matrixIsSquare(matrix) {
   return (
+    !matrix.some((row) => {
+      return !Array.isArray(row) || row.length !== matrix.length;
+    })
+  );
+
+  // TODO: This is not efficient, why check all rows if one row doesn't meet condition below. 
+  return (
     matrix.filter((row) => {
       return !Array.isArray(row) || row.length !== matrix.length;
     }).length === 0

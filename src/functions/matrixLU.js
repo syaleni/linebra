@@ -16,6 +16,10 @@ import matrixIdentity from '@/functions/matrixIdentity';
  * Rearranging the rows means to multiply {\displaystyle A} by a permutation matrix P:
  * PA = A'
  * (Ref: https://rosettacode.org/wiki/LU_decomposition)
+ * @todo
+ * An invertible matrix A has an LU decomposition provided that all its leading submatrices have
+ * non-zero determinants. How to get around it in such case? It is always possible to re-order the
+ * rows of an  invertible matrix so that all of the submatrices have non-zero determinants.
  */
 export default function matrixLU(matrix) {
   if (!matrixIsSquare(matrix))

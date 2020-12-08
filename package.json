@@ -16,7 +16,9 @@
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "prepublishOnly": "webpack --mode=production",
-    "generate-docs": "jsdoc -c ./conf.json"
+    "generate-docs": "jsdoc -c ./conf.json",
+    "bench:build": "webpack --config webpack.bench.config.js && node ./benchmarks/benchmark.build.js",
+    "bench": "node ./benchmarks/benchmark.build.js"
   },
   "keywords": [],
   "license": "MIT",
