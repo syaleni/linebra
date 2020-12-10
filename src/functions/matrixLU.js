@@ -19,7 +19,8 @@ import matrixIdentity from '@/functions/matrixIdentity';
  * @todo
  * An invertible matrix A has an LU decomposition provided that all its leading submatrices have
  * non-zero determinants. How to get around it in such case? It is always possible to re-order the
- * rows of an  invertible matrix so that all of the submatrices have non-zero determinants.
+ * rows of an  invertible matrix so that all of the submatrices have non-zero determinants (see:
+ * https://en.wikipedia.org/wiki/Pivot_element#:~:text=A%20pivot%20position%20in%20a,row%20echelon%20form%20of%20A.&text=Also%2C%20the%20pivot%20of%20a,row%20in%20row%20echelon%20form.)
  */
 export default function matrixLU(matrix) {
   if (!matrixIsSquare(matrix))

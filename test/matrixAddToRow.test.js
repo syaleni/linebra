@@ -8,7 +8,6 @@ const matrix = [
 
 test('Add 1 to row 0', () => {
   const mat2 = matrixAddToRow(matrix, 0, 1);
-
   expect(mat2).toStrictEqual([
     [2, 2, 2, 2],
     [1, 1, 1, 1],

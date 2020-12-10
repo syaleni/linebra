@@ -7,8 +7,8 @@
  * @param {Number} factor
  * @return {Array}
  * @example
- * // returns [[2, 2], [4, 4]]
  * matrixTimesScalar([[1, 1], [2, 2]], 2)
+ * // returns [[2, 2], [4, 4]]
  */
 export default function matrixTimesScalar(matrix, factor) {
   if (isNaN(factor)) return matrix;
